@@ -1,0 +1,44 @@
+.filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 13vh;
+  color: #d9d9d9;
+}
+.filter__params {
+  display: flex;
+  align-items: center;
+}
+.filter__params > * {
+  padding-right: 40px;
+}
+.filter__types {
+  margin-right: -13px;
+}
+.filter__dropdown_sort {
+  display: flex;
+  align-items: center;
+  width: 210px;
+}
+.filter__slider {
+  display: flex;
+}
+.filter__slider > span {
+  padding-right: 20px;
+  padding-top: 2px;
+}
+.filter__slider > div {
+  width: 300px;
+}
+.filter .MuiPaper-root {
+  top: 20px;
+}
+.filter .MuiFormControlLabel-root {
+  margin-left: -9px;
+}
+
+.MuiTooltip-tooltip.MuiTooltip-tooltipPlacementBottom {
+  color: #d9d9d9;
+  margin: 0;
+}

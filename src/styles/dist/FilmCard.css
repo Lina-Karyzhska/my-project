@@ -1,0 +1,35 @@
+.card {
+  width: 100%;
+}
+.card__desc {
+  padding: 0 5px;
+  display: inline-block;
+}
+.card__desc::first-letter {
+  text-transform: uppercase;
+}
+.card__fav {
+  background-color: transparent;
+  border: none;
+}
+.card__fav svg {
+  position: relative;
+  top: 3px;
+}
+.card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card__img_wrapper {
+  height: 400px;
+}
+.card .MuiPaper-root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.card .MuiCardContent-root:last-child {
+  padding-bottom: 16px;
+  text-align: center;
+}

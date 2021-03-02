@@ -22,6 +22,7 @@ class Filter extends Component {
     setFilters = (filter, value) => {
         this.filters[filter] = value;
         this.props.getFilters(this.filters);
+        document.querySelector(".section_second").scrollIntoView({behavior: "smooth"});
     }
 
     componentDidUpdate() {

@@ -11,6 +11,11 @@ class Main extends Component {
           <main>
             <Section isFirst={true}/>
             <Section title={this.props.title} isFirst={false}/>
+
+            { localStorage.isAuthenticated == "false" && 
+            <div className="modal">
+              <p>You can create favourite list after registration</p>
+            </div> }
           </main>
         )
     }

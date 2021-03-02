@@ -14,9 +14,6 @@
 .slider__wrapper .slick-list {
   overflow: visible;
 }
-.slider__wrapper .slick-arrow {
-  display: none !important;
-}
 .slider__item {
   height: 60vh;
   margin: 0 20px;
@@ -43,6 +40,6 @@
   justify-content: center;
 }
 .slider__item img {
-  border-radius: 20px;
+  border-radius: 0 20px 20px 0;
   object-fit: cover;
 }

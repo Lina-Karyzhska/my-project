@@ -36,7 +36,6 @@ h4 {
 .section__wrapper {
   width: 91%;
   max-width: 1500px;
-  overflow: hidden;
   margin: auto;
 }
 
@@ -54,4 +53,39 @@ h4 {
 }
 .button:active {
   background-color: #f8504d;
+}
+
+.fav__btn {
+  height: calc(23vh - 80px);
+  display: flex;
+  justify-content: center;
+}
+.fav__btn .filmlist__button {
+  padding-bottom: 0;
+}
+
+.modal {
+  position: fixed;
+  padding: 15px;
+  bottom: 15px;
+  right: 20px;
+  opacity: 0;
+  border-radius: 5px;
+  background-color: #566269;
+  color: #d9d9d9;
+  animation-name: show;
+  animation-duration: 10s;
+  animation-direction: alternate;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  animation-delay: 10s;
+}
+
+@keyframes show {
+  0%, 100% {
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 1;
+  }
 }

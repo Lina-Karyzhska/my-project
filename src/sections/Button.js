@@ -7,7 +7,9 @@ class Button extends Component {
 
     render() {
         return (
-          <button onClick={this.props.handleClick} className="button">{this.props.inner}</button>
+          <div className="filmlist__button">
+            <button onClick={this.props.handleClick} className="button">{this.props.inner}</button>
+          </div>
         )
     }
 }

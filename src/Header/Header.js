@@ -8,7 +8,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 function injectLoginInfo(Component) {
   const InjectedInfo = function (props) {
-    const { loginWithRedirect, user, isAuthenticated, isLoading } = useAuth0();
+    const { user, isAuthenticated, isLoading } = useAuth0();
     return <Component {...props} info={{ user, isAuthenticated, isLoading }} />;
   };
   return InjectedInfo;
@@ -29,17 +29,21 @@ class Header extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.handleChange(this.filmTitle.current.value);
+        document.querySelector(".section_second").scrollIntoView({behavior: "smooth"});
     }
 
     componentDidUpdate() {
         if (this.state.isAuthenticated != this.props.info.isAuthenticated && !this.props.info.isLoading) {
             this.setState({isAuthenticated: this.props.info.isAuthenticated});
-            localStorage.isAuthenticated = this.props.info.isAuthenticated;  
+            localStorage.isAuthenticated = this.props.info.isAuthenticated;
+            this.props.handleAuth(this.props.info.isAuthenticated);
         }
+
         if (this.props.info.isAuthenticated  && !this.props.info.isLoading) {
             localStorage.nickname =  this.props.info.user.nickname;
             localStorage.email = this.props.info.user.email;
         }
+        console.log(this.props.info.isAuthenticated)
     }
 
     render() {

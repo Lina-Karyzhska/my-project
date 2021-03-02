@@ -51,7 +51,7 @@ class FilmList extends Component {
       for (let i = 0; i < this.state.counter; i++) {
         if (!this.state.filmList[i]) break;
         const {id, Title, Year, Type, Ratings, Poster} = this.state.filmList[i];
-        cards.push(<FilmCard key={id} info={{Title, Year, Type, Ratings, Poster}} isFetched />)
+        cards.push(<FilmCard key={id} info={{Title, Year, Type, Ratings, Poster, id}} isFetched />)
       }
       return cards.length ? cards : <div className="filmlist__notFound">Not found</div>
     }
@@ -130,10 +130,8 @@ class FilmList extends Component {
                 {this.isFetched ? this.getCards() : this.getSkeletons()}
               </div>
 
-              <div className="filmlist__button">
-                { this.areAllFilmsShown() ? <Button handleClick={this.revertCounter} inner='Hide'/> 
-                : this.state.filmList.length > 10 ? <Button handleClick={this.increaseCounter} inner='More'/> : null }
-              </div>
+              { this.areAllFilmsShown() ? <Button handleClick={this.revertCounter} inner='Hide'/> 
+              : this.state.filmList.length > 10 && <Button handleClick={this.increaseCounter} inner='More'/> }
             </div>
         )
     }

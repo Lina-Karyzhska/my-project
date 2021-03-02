@@ -8,13 +8,29 @@
 .card__desc::first-letter {
   text-transform: uppercase;
 }
-.card__fav {
+.card__favbtn {
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
-.card__fav svg {
+.card__favbtn:focus {
+  outline: none;
+}
+.card__favbtn svg {
   position: relative;
   top: 3px;
+}
+.card__favbtn svg path:first-child {
+  fill: #b5b5b6;
+}
+.card__favbtn svg path:nth-child(2) {
+  fill: #909394;
+}
+.card__favbtn_isFav svg path:first-child {
+  fill: #ffdc64;
+}
+.card__favbtn_isFav svg path:nth-child(2) {
+  fill: #ffc850;
 }
 .card__img {
   width: 100%;
@@ -32,4 +48,10 @@
 .card .MuiCardContent-root:last-child {
   padding-bottom: 16px;
   text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.card .MuiCardContent-root:last-child div:last-child {
+  margin-top: auto;
 }

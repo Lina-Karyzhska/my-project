@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import AppSlider from './Slider/Slider';
 import FilmList from './Films/FilmList';
 import Profile from './Profile/Profile';
+import FavFilms from './Films/FavFilms';
 
 class Section extends Component {
     constructor(props){
@@ -15,12 +16,12 @@ class Section extends Component {
         return (
           <div className={sectClassName}>
             <Switch>
-              {/* <Route exact path="/" component={ this.props.isFirst ? AppSlider : FilmList } /> */}
               <Route exact path="/"> 
                 { this.props.isFirst ? <AppSlider /> : <FilmList title={this.props.title} /> }
               </Route>
 
-              <Route exact path="/profile" component={ this.props.isFirst ? Profile : null } />
+              { localStorage.isAuthenticated == "true" && <Route exact path="/profile" component={ this.props.isFirst ? Profile : FavFilms } /> }
+
               <Redirect to="/" />
             </Switch>
           </div>

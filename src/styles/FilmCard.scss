@@ -10,12 +10,41 @@
     }
   }
 
-  &__fav {
+  &__favbtn {
     background-color: transparent;
     border: none;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+
     svg {
       position: relative;
       top: 3px;
+
+      path {
+        &:first-child {
+          fill: #b5b5b6;
+        }
+
+        &:nth-child(2) {
+          fill: #909394;
+        }
+      }
+    }
+
+    &_isFav {
+      svg {
+        path {
+          &:first-child {
+            fill: #ffdc64;
+          }
+
+          &:nth-child(2) {
+            fill: #ffc850;
+          }
+        }
+      }
     }
   }
 
@@ -38,5 +67,11 @@
   .MuiCardContent-root:last-child {
     padding-bottom: 16px;
     text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    div:last-child {
+      margin-top: auto;
+    }
   }
 }

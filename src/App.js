@@ -8,6 +8,7 @@ class App extends Component {
       super(props);
       this.state = {
         title: "",
+        isAuthenticated: false
       }
     }
 
@@ -15,10 +16,14 @@ class App extends Component {
       this.setState({title: title});
     }
 
+    registration = (bool) => {
+      this.setState({isAuthenticated: bool});
+    }
+
     render() {
         return (
           <>
-            <Header handleChange={this.getTitle}/>
+            <Header handleAuth={this.registration} handleChange={this.getTitle}/>
             <Main title={this.state.title}/>
           </>
         )

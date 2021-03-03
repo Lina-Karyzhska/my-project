@@ -8,7 +8,7 @@ import '../../../styles/dist/DropdownGenres.css';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
-    margin: theme.spacing(1),
+    margin: "0 8px",
     '& .MuiInputBase-root': {
       color: '#d9d9d9',
       paddingRight: "5px",

@@ -27,32 +27,18 @@
 }
 .header__controls {
   font-size: 0;
-  width: 31%;
+  width: 350px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
 }
-.header__form {
+.header__search_wrapper {
   font-size: 0;
   width: 80%;
 }
 .header__search {
   width: 100%;
-  height: 30px;
-  padding: 0 20px;
-  font-size: 16px;
-  color: #ededed;
-  background-color: #414f57;
-  border: none;
-  border-radius: 16px;
-}
-.header__search:focus {
-  background-color: #566269;
-  outline: none;
-}
-.header__search::placeholder {
-  color: #c7c7c7;
 }
 .header__login_btn svg {
   fill: #c7c7c7;

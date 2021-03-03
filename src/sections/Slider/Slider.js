@@ -1,4 +1,3 @@
-import '../../styles/dist/Slider.css'
 import "../../../node_modules/slick-carousel/slick/slick.css"; 
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import React, { Component } from 'react';
@@ -68,7 +67,7 @@ class AppSlider extends Component {
       };
 
       return ( 
-        <>
+        <div className="section__slider">
           <div className="slider__mask"></div>
           
           <section className="slider">
@@ -78,7 +77,7 @@ class AppSlider extends Component {
               </Slider>
             </div>
           </section>
-        </>
+        </div>
       )
     }
 }

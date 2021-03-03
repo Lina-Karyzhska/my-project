@@ -44,7 +44,7 @@ class Avatar extends Component {
         return (
           <div className="profile__avatar">
             <canvas className="profile__avatar_canvas" id="canvasAvatar"></canvas>
-            <label className="button profile__avatar_btn" for="avatar_input">Load</label>
+            <label className="button profile__avatar_btn" htmFlor="avatar_input">Load</label>
             <input className="profile__avatar_input" id="avatar_input" type="file" onChange={this.getImage}/>
           </div>
         )

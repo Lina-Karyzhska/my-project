@@ -22,12 +22,12 @@
   background-color: #445b68;
 }
 .profile__avatar_canvas {
-  width: 225px;
+  width: 200px;
   height: 300px;
   background-color: #414f57;
 }
 .profile__information {
-  width: 70%;
+  width: 75%;
   display: flex;
   flex-direction: column;
 }

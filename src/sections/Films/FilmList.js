@@ -1,4 +1,3 @@
-import '../../styles/dist/FilmList.css'
 import React, { Component } from 'react';
 import FilmCard from './FilmCard';
 import Filter from './Filter/Filter';
@@ -9,10 +8,11 @@ class FilmList extends Component {
       super(props);
       this.isFetched = false;
       this.filmList = [];
+      this.size = window.innerWidth > 1024 ? 10 : (window.innerWidth > 768 || window.innerWidth < 500) ? 8 : 9;
       
       this.state = {
         filmList: [],
-        counter: 10,
+        counter: this.size,
       }
 
       this.getYear = this.getYear.bind(this);
@@ -20,7 +20,7 @@ class FilmList extends Component {
 
     getSkeletons() {
       let skeletons = [];
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < this.size; i++) {
         skeletons.push(<FilmCard key={i} />)
       }
       return skeletons;
@@ -42,8 +42,20 @@ class FilmList extends Component {
         this.isFetched = true;
     }
 
+    updateSize = () => {
+      this.size = window.innerWidth > 1024 ? 10 : (window.innerWidth > 768 || window.innerWidth < 500) ? 8 : 9;
+      this.setState({
+        counter: this.size
+      });
+    }
+
     componentDidMount() {
       this.getFilms();
+      window.addEventListener("resize", this.updateSize);
+    }
+
+    componentWillUnmount() {
+      window.removeEventListener("resize", this.updateSize);
     }
 
     getCards = () => {
@@ -82,7 +94,7 @@ class FilmList extends Component {
       this.isFetched = true;
       this.setState({
         filmList: [...films],
-        counter: 10,
+        counter: this.size,
       })
     }
 
@@ -108,20 +120,20 @@ class FilmList extends Component {
     }
 
     increaseCounter = () => {
-      this.setState({counter: this.state.counter + 10})
+      this.setState({counter: this.state.counter + this.size})
     }
 
     revertCounter = () => {
-      this.setState({counter: 10})
+      this.setState({counter: this.size})
     }
 
     areAllFilmsShown = () => {
-      if (this.state.filmList.length > 10) return this.state.counter >= this.state.filmList.length;
+      if (this.state.filmList.length > this.size) return this.state.counter >= this.state.filmList.length;
     }
 
      render() {
         return (
-            <div className="section__wrapper">
+            <div className="section__wrapper" >
               <div className="filmlist__control">
                 <Filter title={this.props.title} getFilters={this.getFilteredFilms}/>
               </div>
@@ -131,7 +143,7 @@ class FilmList extends Component {
               </div>
 
               { this.areAllFilmsShown() ? <Button handleClick={this.revertCounter} inner='Hide'/> 
-              : this.state.filmList.length > 10 && <Button handleClick={this.increaseCounter} inner='More'/> }
+              : this.state.filmList.length > this.size && <Button handleClick={this.increaseCounter} inner='More'/> }
             </div>
         )
     }

@@ -10,7 +10,7 @@ class Main extends Component {
         return (
           <main>
             <Section isFirst={true}/>
-            <Section title={this.props.title} isFirst={false}/>
+            <Section title={this.props.title} isFirst={false} favFilmsShown={this.props.favFilmsShown}/>
 
             { localStorage.isAuthenticated == "false" && 
             <div className="modal">

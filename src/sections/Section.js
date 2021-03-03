@@ -11,21 +11,25 @@ class Section extends Component {
     }
 
     render() {
-        let sectClassName = "section section_";
-        this.props.isFirst ? sectClassName += "first" : sectClassName += "second";
-        return (
-          <div className={sectClassName}>
-            <Switch>
-              <Route exact path="/"> 
-                { this.props.isFirst ? <AppSlider /> : <FilmList title={this.props.title} /> }
-              </Route>
+      const WrappedFav = (props) => {
+        return (<FavFilms {...props} title={this.props.title} favFilmsShown={this.props.favFilmsShown}/>)
+      }
 
-              { localStorage.isAuthenticated == "true" && <Route exact path="/profile" component={ this.props.isFirst ? Profile : FavFilms } /> }
+      let sectClassName = "section section_";
+      this.props.isFirst ? sectClassName += "first" : sectClassName += "second";
+      return (
+        <div className={sectClassName}>
+          <Switch>
+            <Route exact path="/"> 
+              { this.props.isFirst ? <AppSlider /> : <FilmList title={this.props.title} /> }
+            </Route>
 
-              <Redirect to="/" />
-            </Switch>
-          </div>
-        )
+            { localStorage.isAuthenticated == "true" && <Route exact path="/profile" component={ this.props.isFirst ? Profile : WrappedFav } /> }
+
+            <Redirect to="/" />
+          </Switch>
+        </div>
+      )
     }
 }
 

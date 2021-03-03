@@ -4,7 +4,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 const LoginLink = () => {
   const { loginWithRedirect, isAuthenticated } = useAuth0();
   function handleClick() {
-    console.log(isAuthenticated)
     loginWithRedirect();
   }
 

@@ -1,4 +1,3 @@
-import '../styles/dist/Header.css';
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import LoginIcon from './LoginIcon';
@@ -23,13 +22,30 @@ class Header extends Component {
 
       this.state = {
           isAuthenticated: localStorage.isAuthenticated || "false",
+          isBig: window.innerWidth > 768 ? true : false,
       }
+    }
+
+    updateScreen = () => {
+      let isBig = window.innerWidth > 768 ? true : false;
+      this.setState({
+        isBig: isBig,
+      });
+    }
+
+    componentDidMount() {
+      window.addEventListener("resize", this.updateScreen);
+    }
+
+    componentWillUnmount() {
+      window.removeEventListener("resize", this.updatescreen);
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.handleChange(this.filmTitle.current.value);
         document.querySelector(".section_second").scrollIntoView({behavior: "smooth"});
+        this.filmTitle.current.value = "";
     }
 
     componentDidUpdate() {
@@ -43,7 +59,6 @@ class Header extends Component {
             localStorage.nickname =  this.props.info.user.nickname;
             localStorage.email = this.props.info.user.email;
         }
-        console.log(this.props.info.isAuthenticated)
     }
 
     render() {
@@ -56,9 +71,11 @@ class Header extends Component {
                 </Link>
 
                 <div className="header__controls">
-                    <form className="header__form" onSubmit={this.handleSubmit}>
-                        <input className="header__search" type="text" placeholder="Search by name" ref={this.filmTitle}/>
-                    </form>
+                    { this.state.isBig ? 
+                        <form className="header__search_wrapper" onSubmit={this.handleSubmit}>
+                            <input className="header__search search" type="text" placeholder="Search by name" ref={this.filmTitle}/>
+                        </form> 
+                    : null }
 
                     { localStorage.isAuthenticated == "true" ? <div className="header__profile_avatar"><span></span></div> : <LoginIcon onClick={this.props.loginWithRedirect}/> }
 

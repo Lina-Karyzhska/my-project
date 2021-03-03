@@ -31,10 +31,11 @@
   border-radius: 20px;
 }
 .slider__item_description {
-  padding: 30px;
+  padding: 40px;
+  height: 100%;
   position: relative;
   z-index: 1;
-  color: ivory;
+  color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -42,4 +43,22 @@
 .slider__item img {
   border-radius: 0 20px 20px 0;
   object-fit: cover;
+  width: 30%;
+}
+.slider__title {
+  font-size: 40px;
+  padding-bottom: 10px;
+  line-height: 40px;
+}
+.slider__subtitle {
+  padding-top: 10px;
+}
+
+.section__slider {
+  height: 77vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
 }

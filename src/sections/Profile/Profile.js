@@ -1,4 +1,3 @@
-import '../../styles/dist/Profile.css';
 import React, { Component } from 'react';
 import Avatar from './Avatar';
 import Information from './Information';
